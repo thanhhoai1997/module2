@@ -7,17 +7,17 @@ public class test {
         Scanner input  = new Scanner(System.in);
         Triangle  triangles = new Triangle ();
         System.out.println("nhap do dai canh 1 cua tam giac:");
-        double a = input.nextDouble();
+        double a = Double.parseDouble(input.nextLine());
         triangles.setSize1(a);
         System.out.println("nhap do dai canh 2 cua tam giac : ");
-        double b = input.nextDouble();
+        double b = Double.parseDouble(input.nextLine());
         triangles.setSize2(b);
         System.out.println("nhap do dai canh 3 cua tam giac");
-        double c = input.nextDouble();
+        double c = Double.parseDouble(input.nextLine());
         triangles.setSize3(c);
 
         System.out.println("nhap mau sac cua tam giac: ");
-        String color = input.next();
+        String color = input.nextLine();
         triangles.setColor(color);
         kiemTra(triangles);
 
@@ -50,6 +50,7 @@ public class test {
                     break;
                 case 5:
                     System.out.println("bey bey");
+                    break;
                 default:
                     System.out.println("nhap ngoai lua chon, moi ban chon lai");
                     break;

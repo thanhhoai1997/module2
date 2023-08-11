@@ -1,50 +1,46 @@
-package _09_dsa_stack_queue.bt_hethongquanlynhansu;
+package _10_java_colection_frameword.th_comparable_comparator;
 
+public class Student implements Comparable<Student> {
+    private String name;
+    private Integer age ;
+    private String address;
 
-public class NhanSu  implements Comparable<NhanSu> {
-    private String hoTen;
-    private String gioiTinh;
-    private int namSinh;
-
-    public NhanSu() {
+    public Student(String name, Integer age, String address) {
+        this.name = name;
+        this.age = age;
+        this.address = address;
     }
 
-    public NhanSu(String hoTen, String gioiTinh, int namSinh) {
-        this.hoTen = hoTen;
-        this.gioiTinh = gioiTinh;
-        this.namSinh = namSinh;
+    public String getName() {
+        return name;
     }
 
-    public String getHoTen() {
-        return hoTen;
+    public Integer getAge() {
+        return age;
     }
 
-    public String getGioiTinh() {
-        return gioiTinh;
+    public String getAddress() {
+        return address;
     }
 
-    public int getNamSinh() {
-        return namSinh;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setHoTen(String hoTen) {
-        this.hoTen = hoTen;
+    public void setAge(Integer age) {
+        this.age = age;
     }
 
-    public void setGioiTinh(String gioiTinh) {
-        this.gioiTinh = gioiTinh;
-    }
-
-    public void setNamSinh(int namSinh) {
-        this.namSinh = namSinh;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     @Override
     public String toString() {
-        return "{" +
-                "hoTen='" + hoTen + '\'' +
-                ", gioiTinh='" + gioiTinh + '\'' +
-                ", namSinh=" + namSinh +
+        return "Student{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", address='" + address + '\'' +
                 '}';
     }
 
@@ -81,7 +77,7 @@ public class NhanSu  implements Comparable<NhanSu> {
      * inconsistent with equals."
      */
     @Override
-    public int compareTo(NhanSu o) {
-        return this.getNamSinh()  -  o.getNamSinh();
+    public int compareTo(Student student) {
+        return this.name.compareTo(student.getName());
     }
 }

@@ -1,17 +1,26 @@
 package _09_dsa_stack_queue.bt_hethongquanlynhansu;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.Queue;
 
 
 public class HeThongQuanLyNhanSu {
     public static void main(String[] args) {
-        NhanSu nhanSu1 = new NhanSu("A","nam",12021997);
-        NhanSu nhanSu2 = new NhanSu("B","nu",13021997);
-        NhanSu nhanSu3 = new NhanSu("C","nam",22041998);
-        NhanSu nhanSu4 = new NhanSu("D","nu",12021997);
+        NhanSu nhanSu1 = new NhanSu("A","nam",1997);
+        NhanSu nhanSu2 = new NhanSu("B","nu",1999);
+        NhanSu nhanSu3 = new NhanSu("C","nam",1998);
+        NhanSu nhanSu4 = new NhanSu("D","nu",1997);
         NhanSu[] nhanSus = new NhanSu[]{nhanSu1,nhanSu2,nhanSu3,nhanSu4};
+
+
+
+     Arrays.sort(nhanSus);
+     Arrays.stream(nhanSus).forEach(System.out::println);
+
+
+
 
         Queue nu = new LinkedList<NhanSu>();
         Queue nam = new LinkedList<NhanSu>();

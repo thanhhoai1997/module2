@@ -3,7 +3,8 @@ package _12_thuattoansapxep;
 public class SapXepChon {
     public static void main(String[] args) {
         int[] arr = {7,9,3,4,6,8,1,2};// 1 2 3 4 6 8 7 9
-        for (int i = 0; i < arr.length-1;i++){
+        for (int i =
+             0; i < arr.length-1;i++){
             int i_min =  i;
             int v_min = arr[i]; // 9
             for (int j = i; j < arr.length;j++){

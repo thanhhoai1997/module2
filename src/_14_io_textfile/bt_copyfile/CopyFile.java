@@ -1,9 +1,9 @@
-package _14_io_textfile.bt_docfile_csv2;
+package _14_io_textfile.bt_copyfile;
 
 import java.io.*;
 import java.util.Scanner;
 
-public class DocFileCSV {
+public class CopyFile {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         File sourceFile = new File("su_dung_file\\data.txt");

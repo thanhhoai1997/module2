@@ -27,8 +27,6 @@ public class Main {
         }catch (IllegalTriangleException e){
             System.out.println(e);
         }
-
-
     }
 
 

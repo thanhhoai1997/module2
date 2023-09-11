@@ -15,7 +15,10 @@ public class Test {
             System.out.println("3.Hiển thị danh sách sản phẩm");
             System.out.println("4.Tìm kiếm sản phẩm");
             System.out.println("5.Sắp xếp sản phẩm tăng dần, giảm dần theo giá");
+            System.out.println("6. ghi du lieu vao file student.csv");
+            System.out.println("doc du lieu tu file student.csv");
             System.out.println("0. thoat");
+
             System.out.println("-----------------------------");
             chon = sc.nextInt();
             sc.nextLine();
@@ -56,6 +59,14 @@ public class Test {
                         producManagerLinkedList.sapXepGiam();
 
                     }
+                    break;
+
+                case 6:
+                    producManagerLinkedList.ghiDuLieu();
+                case 7:
+                    producManagerLinkedList.docDuLieu();
+                    break;
+
 
 
 

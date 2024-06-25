@@ -8,6 +8,7 @@ public class menuchoungdung {
         Scanner scanner = new Scanner(System.in);
 
         while (choice != 0){
+            
             System.out.println("Menu");
             System.out.println("1. Draw the triangle");
             System.out.println("2. Draw the square");

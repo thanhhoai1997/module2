@@ -208,7 +208,7 @@ public class FuramaController {
                                                 bookingService.ghiDuLieuBooking();
                                                 break;
                                             case 4:
-                                                bookingService.docDuLieuBooking();
+                                                bookingService.docDuLieuBooking().forEach(v-> System.out.println(v));
                                                 break;
                                             case 5:
                                                 bookingService.taoHopDong();

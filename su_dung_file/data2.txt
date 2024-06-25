@@ -1,4 +1,0 @@
-1,US,My
-2,CN,China
-3,AU,Australia
-4,JP,JaPan

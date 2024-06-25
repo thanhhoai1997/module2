@@ -1,16 +1,15 @@
 package services;
 
-import models.Booking;
-import models.Customer;
+import models.*;
 import models.Date;
-import models.Facility;
-import models.HopDongChoThue;
 import utils.ConstantUtil;
 import utils.doc_ghi_file.DocGhiFile;
+import utils.doc_ghi_file.DocGhiFileSet;
 
 import java.util.*;
 
 public class BookingServiceImpl implements BookingService {
+    DocGhiFileSet docGhiFileSet = new DocGhiFileSet();
     DocGhiFile docGhiFile = new DocGhiFile();
     Scanner sc = new Scanner(System.in);
 
@@ -232,23 +231,89 @@ public class BookingServiceImpl implements BookingService {
     }
 
     public void ghiDuLieuBooking() {
-        System.out.println("nhap duong dan : ");
-        String toPath = sc.nextLine();
-        System.out.println("Nhap so nguyen bat ki neu ban muon appen :\n" +
-                "Nhap chu bat ki neu ban  muon Override :   ");
-        boolean isAppen = sc.hasNextInt();
-        DocGhiFile docGhiFile = new DocGhiFile();
+        docGhiFileSet.writteFile(bookingsSet,ConstantUtil.BOOKINGPATH,false);
 
 
-        docGhiFile.writeFile((List<?>) bookingsSet, toPath, isAppen);
+
     }
 
-    public void docDuLieuBooking() {
+    public Set<Booking> docDuLieuBooking() {
+        Set<Booking> bookingSet = new TreeSet<>();
+        Set<String> stringSet = docGhiFileSet.readFile(ConstantUtil.BOOKINGPATH);
+        String [] arr ;
+        String [] arr1;
+        String [] arr2;
+        String [] arr3;
+        for (String s: stringSet
+             ) {
+            arr = s.split(",");
+            String mabk = arr[0];
+            arr1 = arr[1].split("/");
+            int ngay = Integer.parseInt(arr1[0]);
+            int thang  = Integer.parseInt(arr1[1]);
+            int nam = Integer.parseInt(arr1[2]);
+            Date dateBatDau = new Date(ngay,thang,nam);
+            arr2 = arr[2].split("/");
+            int ngay1 = Integer.parseInt(arr2[0]);
+            int thang1  = Integer.parseInt(arr2[1]);
+            int nam1 = Integer.parseInt(arr2[2]);
+            Date dateKetThuc = new Date(ngay1,thang1,nam1);
+            String maDichVu = arr[3];
+            String maKhachHang = arr[4];
+            String tenDichVu = arr[5];
+            arr3 = arr[6].split(",");
+            for (String dichVu: arr3
+                 ) {
+                if (dichVu.startsWith("Dich Vu Mien Phi")){
+                    String ma = arr3[0];;
+                    Double dienTich = Double.parseDouble(arr3[1]);
+                    Double chiPhi = Double.parseDouble(arr3[2]);
+                    int soLuongNguoi = Integer.parseInt(arr3[3]);
+                    String kieuThue = arr3[4];
+
+
+                    String dichVuMienPhi = arr3[5];
+
+                    Facility facility = new Room(ma,dienTich,chiPhi,soLuongNguoi,kieuThue,dichVuMienPhi);
+                    Booking booking = new Booking(mabk,dateBatDau,dateKetThuc,maDichVu,maKhachHang,tenDichVu,facility);
+                    bookingSet.add(booking);
+                }else if (dichVu.startsWith("Dien Tich Ho Boi")){
+                    String ma1 = arr3[0];;
+                    Double dienTich1 = Double.parseDouble(arr3[1]);
+                    Double chiPhi1 = Double.parseDouble(arr3[2]);
+                    int soLuongNguoi1 = Integer.parseInt(arr3[3]);
+                    String kieuThue1= arr3[4];
+
+                    String tieuChuanPhongg1 = arr3[5];
+                    int soTang1 = Integer.parseInt(arr3[6]);
+                    double dienTichHo1 = Double.parseDouble(arr3[7]);
+
+                    Facility villa = new Villa(ma1,dienTich1,chiPhi1,soLuongNguoi1,kieuThue1,tieuChuanPhongg1,dienTichHo1,soTang1);
+                    Booking booking = new Booking(mabk,dateBatDau,dateKetThuc,maDichVu,maKhachHang,tenDichVu,villa);
+                    bookingSet.add(booking);
+                }else {
+                    String ma1 = arr3[0];;
+                    Double dienTich1 = Double.parseDouble(arr3[1]);
+                    Double chiPhi1 = Double.parseDouble(arr3[2]);
+                    int soLuongNguoi1 = Integer.parseInt(arr3[3]);
+                    String kieuThue1= arr3[4];
+
+                    String tieuChuanPhongg1 = arr3[5];
+                    int soTang1 = Integer.parseInt(arr3[6]);
+                    Facility house = new House(ma1,dienTich1,chiPhi1,soLuongNguoi1,kieuThue1,tieuChuanPhongg1,soTang1);
+                    Booking booking = new Booking(mabk,dateBatDau,dateKetThuc,maDichVu,maKhachHang,tenDichVu,house);
+                    bookingSet.add(booking);
+                }
+
+            }
+
+        }
+        return bookingSet;
+
+
     }
 
     public void ghiDuLieuHopDong() {
-
-
 
 
         docGhiFile.writeFile(arrayList, ConstantUtil.contractpath, false);

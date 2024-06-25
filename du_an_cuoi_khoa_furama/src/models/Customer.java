@@ -1,5 +1,8 @@
 package models;
 
+import utils.ConstantUtil;
+
+import java.util.Date;
 import java.util.Scanner;
 
 public class Customer extends Person{
@@ -36,13 +39,30 @@ public class Customer extends Person{
         this.diaChi = diaChi;
     }
     public void input(){
+        Date date = new Date();
         Scanner sc = new Scanner(System.in);
         System.out.println("nhap ma khach hang : ");
         this.setMa(sc.nextLine());
         System.out.println("nhap ho ten: ");
         this.setHoTen(sc.nextLine());
-        System.out.println("nhap ngay sinh");
-        this.setNgaySinh(sc.nextLine());
+while (true){
+    System.out.println("nhap ngay sinh : dd/mm/YYYY ");
+    this.setNgaySinh(sc.nextLine());
+    if (this.getNgaySinh().matches(ConstantUtil.REGEXNGAYSINH)){
+        String arr[] = this.getNgaySinh().split("/");
+        if ((date.getYear() + 1900) - Integer.parseInt(arr[2]) < 100){
+                break;
+        }else {
+            System.err.println("qua 100 tuoi : ");
+        }
+    }else {
+        System.err.println("nhap sai dinh dang ngay sinh");
+    }
+}
+
+
+
+
         System.out.println("nhap gioi tinh : ");
         this.setGioiTinh(sc.nextLine());
         System.out.println("nhap cmnn : ");
@@ -59,7 +79,7 @@ public class Customer extends Person{
 
     @Override
     public String toString() {
-        return String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s","Ma Nhan Vien : " + super.getMa(),"Ho Va Ten = "+super.getHoTen(),"CMND = "+super.getCmnd(),"Email : "+ super.getEmail()
+        return String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s","Ma Khach Hang : " + super.getMa(),"Ho Va Ten = "+super.getHoTen(),"CMND = "+super.getCmnd(),"Email : "+ super.getEmail()
                 ,"Gioi Tinh : " + super.getGioiTinh(), "Ngay Sinh = " + super.getNgaySinh(),"SDT = "+ super.getSdt(),"Loai Khach = " + loaiKhach,"Dia Chi = " + diaChi);
     }
     }
